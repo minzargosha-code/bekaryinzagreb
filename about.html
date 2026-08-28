@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O autoru | BekaryInZagreb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,600;1,9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#1a1009;
+    --bg-panel:#241408;
+    --bg-card:#2c180c;
+    --bg-card-2:#331b0d;
+    --orange-bright:#ff7a2f;
+    --orange-soft:#ffa25c;
+    --orange-burnt:#c1440e;
+    --cream:#f5e7d2;
+    --cream-dim:#d3b48e;
+    --cream-faint:#a98a66;
+    --gold-line:#e2a659;
+    --shadow-warm: 0 18px 40px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(255,122,47,0.14), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(193,68,14,0.12), transparent 55%),
+      var(--bg-deep);
+    color:var(--cream);
+    font-family:'Manrope', sans-serif;
+    min-height:100vh;
+    line-height:1.6;
+    display: flex;
+    flex-direction: column;
+  }
+  a{color:inherit;}
+
+  /* Texture */
+  .flour-layer{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.05;
+    background-image: radial-gradient(circle, var(--cream) 1px, transparent 1.4px);
+    background-size: 26px 26px;
+  }
+
+  /* Header */
+  header{
+    position:relative; z-index:1;
+    padding:60px 24px 20px;
+    text-align:center;
+  }
+  .back-btn {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--orange-soft);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .back-btn:hover { color: var(--orange-bright); }
+  
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold-line);
+    margin:0 0 14px;
+  }
+  h1.brand{
+    font-family:'Fraunces', serif;
+    font-optical-sizing:auto;
+    font-style:italic;
+    font-weight:900;
+    font-size:clamp(2.2rem, 5vw, 4rem);
+    line-height:1;
+    margin:0;
+    background:linear-gradient(100deg, var(--orange-soft) 10%, var(--orange-bright) 45%, #ffd39b 60%, var(--orange-bright) 80%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 6px 22px rgba(255,122,47,0.25));
+  }
+  .hero-divider{
+    width:120px; height:3px; margin:28px auto 0;
+    background:linear-gradient(90deg, transparent, var(--gold-line), transparent);
+    border-radius:2px;
+  }
+
+  /* Main content */
+  main { flex: 1; position: relative; z-index: 1; padding: 40px 24px 80px; }
+  .about-container { max-width: 800px; margin: 0 auto; }
+  
+  .text-card {
+    background: linear-gradient(165deg, var(--bg-card-2), var(--bg-card));
+    border: 1px solid rgba(226,166,89,0.18);
+    border-radius: 16px;
+    padding: 34px 40px;
+    box-shadow: var(--shadow-warm);
+    margin-bottom: 40px;
+  }
+  .text-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    margin: 0 0 16px;
+    color: var(--cream);
+  }
+  .text-card p {
+    color: var(--cream-dim);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .text-card p:last-child { margin-bottom: 0; }
+  .highlight { color: var(--orange-soft); font-weight: 700; }
+
+  /* Photos */
+  .photos-title {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--gold-line);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .photo-frame {
+    background: #fdfbf7;
+    padding: 16px 16px 40px;
+    border-radius: 4px;
+    box-shadow: var(--shadow-warm);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  .photo-frame:nth-child(1) { transform: rotate(-3deg); }
+  .photo-frame:nth-child(2) { transform: rotate(4deg); }
+  .photo-frame:hover { transform: translateY(-10px) rotate(0deg) scale(1.02); z-index: 2; }
+  
+  .photo-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    filter: grayscale(20%) sepia(30%);
+  }
+  .photo-caption {
+    position: absolute;
+    bottom: 12px; left: 0; right: 0;
+    text-align: center;
+    color: #2a1204;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  /* Footer */
+  footer{
+    position:relative; z-index:1;
+    background:var(--bg-panel);
+    border-top:1px solid rgba(226,166,89,0.18);
+    padding: 30px 24px;
+    text-align: center;
+    color: var(--cream-faint);
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .text-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="flour-layer"></div>
+
+<header>
+  <a href="index.html" class="back-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Nazad na početnu
+  </a>
+  <p class="eyebrow">Iza kulisa</p>
+  <h1 class="brand">Tko stoji iza ovoga?</h1>
+  <div class="hero-divider"></div>
+</header>
+
+<main>
+  <div class="about-container">
+    
+    <div class="text-card">
+      <h2>Привет! Будем знакомы. 👋</h2>
+      <p>Меня зовут <span class="highlight">Гоша</span>, и я — разработчик/создатель этого сайта. Если ты читаешь это, значит, ты нашел мою секретную страничку.</p>
+      <p>Этот сайт внешне выглядит как ламповая пекарня в центре Загреба с вкусными круассанами, но на самом деле это — <b>мой тестовый полигон</b>. Здесь я обкатываю современные веб-технологии: красивую верстку на HTML/CSS, логику на JavaScript, а главное — крутые фичи вроде базы данных <span class="highlight">Supabase</span> и интеграции заказов прямо в <span class="highlight">Telegram</span>.</p>
+      <p>Я старался сделать дизайн максимально стильным, «вкусным» и приятным для глаз. Надеюсь, тебе зашло! 😎</p>
+    </div>
+
+    <div class="photos-title">--- Пару моих угарных фоток ---</div>
+    
+    <div class="photo-grid">
+      <!-- ФОТО 1 -->
+      <div class="photo-frame">
+        <!-- ЗАМЕНИ SRC НА СВОЕ ФОТО. Например: src="my-photo-1.jpg" -->
+        <img src="https://placecats.com/400/400?image=12" alt="Мое угарное фото 1">
+        <div class="photo-caption">Когда код скомпилировался с 1 раза</div>
+      </div>
+
+      <!-- ФОТО 2 -->
+      <div class="photo-frame">
+        <!-- ЗАМЕНИ SRC НА СВОЕ ФОТО. Например: src="my-photo-2.jpg" -->
+        <img src="https://placecats.com/400/400?image=14" alt="Мое угарное фото 2">
+        <div class="photo-caption">Дебажу RLS в Supabase в 3 ночи</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Тестовый проект. Создано с любовью и кофе. ☕</p>
+</footer>
+
+</body>
+</html>
